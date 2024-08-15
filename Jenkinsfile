@@ -74,7 +74,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Link to Netlify') {
             agent {
                 docker {
@@ -84,6 +84,7 @@ pipeline {
             }
             steps {
                 sh '''
+                    echo "Testing Git poll"
                     echo "Linking project to Netlify Site ID: $NETLIFY_SITE_ID"
                     npm install netlify-cli
                     node_modules/.bin/netlify link --id=$NETLIFY_SITE_ID
